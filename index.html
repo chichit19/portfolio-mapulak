@@ -568,9 +568,9 @@
                                 const sentMsg = form.querySelector('.sent-message');
                                 const button = form.querySelector('button[type="submit"]');
 
-                                loading.classList.add('d-block');
-                                errorMsg.classList.remove('d-block');
-                                sentMsg.classList.remove('d-block');
+                                loading.classList.add('d-flex');
+                                errorMsg.classList.remove('d-flex');
+                                sentMsg.classList.remove('d-flex');
                                 button.disabled = true;
 
                                 const formData = new FormData(form);
@@ -582,12 +582,12 @@
                                         'Accept': 'application/json'
                                     }
                                 }).then(response => {
-                                    loading.classList.remove('d-block');
+                                    loading.classList.remove('d-flex');
                                     if (response.ok) {
-                                        sentMsg.classList.add('d-block');
+                                        sentMsg.classList.add('d-flex');
                                         form.reset();
                                         setTimeout(() => {
-                                            sentMsg.classList.remove('d-block');
+                                            sentMsg.classList.remove('d-flex');
                                         }, 2000);
                                     } else {
                                         response.json().then(data => {
@@ -596,13 +596,13 @@
                                             } else {
                                                 errorMsg.innerHTML = "Oops! There was a problem submitting your form";
                                             }
-                                            errorMsg.classList.add('d-block');
+                                            errorMsg.classList.add('d-flex');
                                         })
                                     }
                                 }).catch(error => {
-                                    loading.classList.remove('d-block');
+                                    loading.classList.remove('d-flex');
                                     errorMsg.innerHTML = "Oops! There was a problem submitting your form";
-                                    errorMsg.classList.add('d-block');
+                                    errorMsg.classList.add('d-flex');
                                 }).finally(() => {
                                     button.disabled = false;
                                 });

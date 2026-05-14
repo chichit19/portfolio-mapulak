@@ -2326,9 +2326,10 @@ section,
 }
 
 .contact .loading {
-  background: color-mix(in srgb, var(--surface-color), #fff 5%);
+  background: var(--surface-color);
   color: var(--default-color);
   text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .contact .loading:before {
@@ -2344,15 +2345,36 @@ section,
 }
 
 .contact .error-message {
-  background: #df1529;
-  color: #ffffff;
+  background: var(--surface-color);
+  color: #ff4d4f;
+  border: 1px solid rgba(255, 77, 79, 0.2);
   text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact .error-message:before {
+  content: "\F333";
+  font-family: "bootstrap-icons";
+  font-size: 1.25rem;
 }
 
 .contact .sent-message {
-  background: #059652;
-  color: #ffffff;
+  background: var(--surface-color);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.contact .sent-message:before {
+  content: "\F26E";
+  font-family: "bootstrap-icons";
+  font-size: 1.25rem;
 }
 
 @keyframes spin {
