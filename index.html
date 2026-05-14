@@ -550,7 +550,6 @@
                                     <div class="status-container">
                                         <div class="loading">Sending...</div>
                                         <div class="error-message"></div>
-                                        <div class="sent-message">Your message has been sent. Thank you!</div>
                                     </div>
 
                                     <button type="submit" class="btn-submit">Send Message</button>
@@ -565,12 +564,10 @@
                                 const form = this;
                                 const loading = form.querySelector('.loading');
                                 const errorMsg = form.querySelector('.error-message');
-                                const sentMsg = form.querySelector('.sent-message');
                                 const button = form.querySelector('button[type="submit"]');
 
                                 loading.classList.add('d-flex');
                                 errorMsg.classList.remove('d-flex');
-                                sentMsg.classList.remove('d-flex');
                                 button.disabled = true;
 
                                 const formData = new FormData(form);
@@ -584,11 +581,9 @@
                                 }).then(response => {
                                     loading.classList.remove('d-flex');
                                     if (response.ok) {
-                                        sentMsg.classList.add('d-flex');
+                                        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                                        successModal.show();
                                         form.reset();
-                                        setTimeout(() => {
-                                            sentMsg.classList.remove('d-flex');
-                                        }, 2000);
                                     } else {
                                         response.json().then(data => {
                                             if (Object.hasOwn(data, 'errors')) {
@@ -671,6 +666,22 @@
                     href="https://bootstrapmade.com/tools/">DevTools</a>
             </div>
         </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background: var(--surface-color); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px;">
+                <div class="modal-body text-center p-5">
+                    <div class="mb-4">
+                        <i class="bi bi-check-circle" style="font-size: 5rem; color: #10b981;"></i>
+                    </div>
+                    <h2 style="color: var(--heading-color); font-weight: 700;">Message Sent!</h2>
+                    <p style="color: var(--default-color); font-size: 1.1rem; margin-bottom: 2rem;">Thank you for reaching out. I'll get back to you shortly!</p>
+                    <button type="button" class="btn-submit" data-bs-dismiss="modal" style="width: 100%; border-radius: 12px; padding: 12px;">Great!</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     </footer>
 
