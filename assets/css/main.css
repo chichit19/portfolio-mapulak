@@ -2349,7 +2349,6 @@ section,
   color: #ff4d4f;
   border: 1px solid rgba(255, 77, 79, 0.2);
   text-align: left;
-  display: flex;
   align-items: center;
   gap: 12px;
 }
@@ -2365,7 +2364,6 @@ section,
   color: #10b981;
   border: 1px solid rgba(16, 185, 129, 0.2);
   text-align: center;
-  display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
