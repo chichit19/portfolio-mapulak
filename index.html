@@ -586,6 +586,9 @@
                                     if (response.ok) {
                                         sentMsg.classList.add('d-block');
                                         form.reset();
+                                        setTimeout(() => {
+                                            sentMsg.classList.remove('d-block');
+                                        }, 2000);
                                     } else {
                                         response.json().then(data => {
                                             if (Object.hasOwn(data, 'errors')) {
